@@ -44,7 +44,8 @@ class MailjetCollector(object):
 
             name_attribute = self.convertCamelToSnake(attribute)
 
-            gauge = GaugeMetricFamily(self.METRIC_PREFIX + name_attribute, metric_description % name_attribute, value=value)
+            gauge = GaugeMetricFamily(self.METRIC_PREFIX + name_attribute, metric_description % name_attribute, labels=['client', 'campaign'])
+            gauge.add_metric(['wurst', 'brot'], value)
 
             yield gauge
     
